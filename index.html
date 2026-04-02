@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Clarity Report | Premium Home Consulting — Northeast Ohio</title>
-  <meta name="description" content="The $4,500 Home Clarity Report: a 30–50 page renovation roadmap, architect-grade floor plans, 3D model, 360° photo tour, and lifetime advisory relationship. Serving Summit County and Northeast Ohio.">
+  <meta name="description" content="The Home Clarity Report is $4,500 one-time. Get a 30–50 page renovation roadmap, architect-grade floor plans, full 3D model, 360° photo tour, and a lifetime advisory relationship with a 25-year Northeast Ohio remodeling expert. Delivered in 72 hours.">
   <meta name="author" content="Adam Kilgore, Hometown Builders Club">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.homeclarityreport.com/">
@@ -25,34 +25,117 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
 
+  <!-- Google Analytics — replace GA_MEASUREMENT_ID with your G-XXXXXXXX from analytics.google.com -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script> -->
   <!-- Styles -->
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Schema -->
+  <!-- Schema — LocalBusiness + Service + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Home Renovation Consulting",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
     "name": "Home Clarity Report",
-    "description": "A comprehensive $4,500 home consulting service providing a 30–50 page renovation roadmap, architect-grade floor plans, 3D model, 360° photo tour, and lifetime advisory relationship for Northeast Ohio homeowners.",
-    "provider": {
-      "@type": "Organization",
-      "name": "Hometown Builders Club",
-      "url": "https://hometownbuildersclub.com"
+    "description": "A comprehensive $4,500 home consulting service. 30–50 page renovation roadmap, architect-grade floor plans, 3D exterior model, 360° photo tour, and lifetime advisory relationship. Serving Northeast Ohio.",
+    "url": "https://www.homeclarityreport.com",
+    "telephone": "+13305768532",
+    "email": "adam@hometownbuildersclub.com",
+    "founder": {"@type": "Person", "name": "Adam Kilgore"},
+    "foundingDate": "1999",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cuyahoga Falls",
+      "addressRegion": "OH",
+      "addressCountry": "US"
     },
     "areaServed": [
+      {"@type": "City", "name": "Hudson, Ohio"},
+      {"@type": "City", "name": "Bath Township, Ohio"},
+      {"@type": "City", "name": "Richfield, Ohio"},
+      {"@type": "City", "name": "Stow, Ohio"},
+      {"@type": "City", "name": "Cuyahoga Falls, Ohio"},
       {"@type": "AdministrativeArea", "name": "Summit County, Ohio"},
       {"@type": "AdministrativeArea", "name": "Medina County, Ohio"},
       {"@type": "AdministrativeArea", "name": "Northeast Ohio"}
     ],
-    "offers": {
-      "@type": "Offer",
-      "price": "4500",
-      "priceCurrency": "USD",
-      "description": "Complete Home Clarity Report including on-site consultation, 3D digital twin, renovation roadmap, and lifetime advisory relationship"
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Home Clarity Report",
+      "itemListElement": [{
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Complete Home Clarity Package",
+          "description": "30–50 page renovation roadmap, architect-grade floor plans, full 3D exterior model, 360° interior photo tour, proactive replacement pricing, owner\'s manuals, project scopes, and lifetime Home OS dashboard access.",
+          "offers": {
+            "@type": "Offer",
+            "price": "4500",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/LimitedAvailability"
+          }
+        }
+      }]
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Hometown Builders Club",
+      "url": "https://hometownbuildersclub.com"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What do I get for $4,500?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You get a 30–50 page written renovation roadmap, architect-grade floor plans for every level, a full 3D exterior model, a 360° photo tour of every room, proactive replacement pricing for all major systems, complete owner\'s manuals, detailed project scopes, and lifetime access to your Home OS dashboard. Plus a permanent advisory relationship with Adam Kilgore — one point of contact for the life of your home."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does delivery take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your complete Home Clarity Report is delivered within 72 hours of the on-site visit. The visit itself runs 2–3 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from a home inspection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A home inspection tells you what\'s broken. The Clarity Report tells you what to do about it — and everything else. We provide strategic renovation planning, realistic local cost projections based on 25+ years of experience, prioritized project sequencing, and a permanent advisory relationship. Inspectors check boxes; we build roadmaps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We serve homeowners throughout Northeast Ohio — Summit County, Medina County, Cuyahoga County, Portage County, and Northern Stark County. Key cities include Hudson, Bath Township, Richfield, Stow, Cuyahoga Falls, and Fairlawn."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does it cost $4,500?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because it\'s worth it. You\'re getting 25+ years of renovation expertise applied to your specific home, professional-grade technology (3D modeling, Matterport scanning, precision measurements), a 30–50 page custom report, and a lifetime advisory relationship. A single renovation mistake or bad contractor decision can easily cost more than $4,500."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -126,6 +209,20 @@
           <div class="hero__price mono">$4,500</div>
           <div class="hero__price-label">One-time investment</div>
           <div class="hero__price-note">Pays for itself before your first project starts</div>
+          <div class="hero__price-trust">
+            <span class="hero__price-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              25+ years experience
+            </span>
+            <span class="hero__price-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              72-hour delivery
+            </span>
+            <span class="hero__price-trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Lifetime advisory included
+            </span>
+          </div>
         </div>
       </div>
     </section>

@@ -1133,3 +1133,23 @@
 .nav__phone-link:hover { color: var(--color-primary, var(--amber, #C4873A)); }
 .nav__phone-link span { display: none; }
 @media (min-width: 900px) { .nav__phone-link span { display: inline; } }
+
+/* ─── HERO PRICE TRUST ANCHORS ─── */
+.hero__price-trust {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(196,135,58,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.hero__price-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--amber, #C4873A);
+  letter-spacing: 0.01em;
+}
+.hero__price-trust-item svg { flex-shrink: 0; }
