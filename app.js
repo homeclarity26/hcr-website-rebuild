@@ -148,3 +148,41 @@
     }
   });
 })();
+
+// Contact form — AJAX submit via Formspree
+(function(){
+  const forms = [
+    { formId: 'hcr-contact-form', successId: 'hcr-form-success' }
+  ];
+  forms.forEach(({ formId, successId }) => {
+    const form = document.getElementById(formId);
+    const success = document.getElementById(successId);
+    if (!form || !success) return;
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('[type="submit"]');
+      const origText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'flex';
+        } else {
+          btn.textContent = origText;
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or call us directly.');
+        }
+      } catch(err) {
+        btn.textContent = origText;
+        btn.disabled = false;
+        alert('Something went wrong. Please check your connection and try again.');
+      }
+    });
+  });
+})();

@@ -6,8 +6,8 @@
 /* --- CSS Custom Properties --- */
 :root {
   /* Brand Colors */
-  --navy: #1B2B4D;
-  --navy-light: #2C3E63;
+  --navy: #1e3a5f;
+  --navy-light: #26456e;
   --amber: #C4873A;
   --amber-hover: #B47730;
   --amber-light: #D4A366;
@@ -16,7 +16,7 @@
   --grey-light: #F2EFE9;
   --grey-mid: #8A8F9E;
   --grey-dark: #5A5E6B;
-  --text-primary: #1B2B4D;
+  --text-primary: #1e3a5f;
   --text-body: #3D4355;
   --text-muted: #8A8F9E;
 
@@ -33,8 +33,8 @@
   --shadow-xl: 0 20px 60px rgba(27,43,77,0.15);
 
   /* Typography */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
 
   /* Spacing */
