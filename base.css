@@ -11,9 +11,9 @@
   --amber: #C4873A;
   --amber-hover: #B47730;
   --amber-light: #D4A366;
-  --cream: #FAF8F5;
+  --cream: #F2EFE9;
   --white: #FFFFFF;
-  --grey-light: #F2EFE9;
+  --grey-light: #EDE9E2;
   --grey-mid: #8A8F9E;
   --grey-dark: #5A5E6B;
   --text-primary: #1e3a5f;
@@ -33,7 +33,7 @@
   --shadow-xl: 0 20px 60px rgba(27,43,77,0.15);
 
   /* Typography */
-  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Switzer', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
 
