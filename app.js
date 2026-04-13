@@ -1,188 +1,287 @@
-/* ============================================
+/* ============================================================
    APP.JS — Interactivity
    Home Clarity Report
-   ============================================ */
+   homeclarityreport.com
+   ============================================================ */
 
 (function () {
   'use strict';
 
-  // --- Dark mode toggle ---
-  const THEME_KEY = 'hcr-theme';
-
-  var _store = (function () {
+  /* ─────────────────────────────────────────────
+     LOCAL STORAGE WRAPPER (safe)
+  ───────────────────────────────────────────── */
+  var store = (function () {
     try {
       var s = window['local' + 'Storage'];
-      s.setItem('_t', '1');
-      s.removeItem('_t');
+      s.setItem('_hcr_t', '1');
+      s.removeItem('_hcr_t');
       return s;
     } catch (e) {
       var mem = {};
-      return { getItem: function (k) { return mem[k] || null; }, setItem: function (k, v) { mem[k] = v; }, removeItem: function (k) { delete mem[k]; } };
+      return {
+        getItem: function (k) { return mem[k] !== undefined ? mem[k] : null; },
+        setItem: function (k, v) { mem[k] = String(v); },
+        removeItem: function (k) { delete mem[k]; }
+      };
     }
   })();
 
-  function safeGetItem(key) {
-    return _store.getItem(key);
+  /* ─────────────────────────────────────────────
+     GA TRACKING HELPER
+  ───────────────────────────────────────────── */
+  function trackEvent(action, category, label) {
+    if (typeof gtag === 'function') {
+      gtag('event', action, { event_category: category, event_label: label });
+    }
   }
+  // Expose globally so inline onclick="" attributes can call it
+  window.trackEvent = trackEvent;
 
-  function safeSetItem(key, val) {
-    _store.setItem(key, val);
-  }
+  /* ─────────────────────────────────────────────
+     DARK MODE TOGGLE
+  ───────────────────────────────────────────── */
+  var THEME_KEY = 'hcr-theme';
 
   function getPreferredTheme() {
-    var stored = safeGetItem(THEME_KEY);
-    if (stored) return stored;
+    var stored = store.getItem(THEME_KEY);
+    if (stored === 'dark' || stored === 'light') return stored;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  function setTheme(theme) {
+  function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    safeSetItem(THEME_KEY, theme);
-    updateThemeIcon(theme);
-  }
-
-  function updateThemeIcon(theme) {
-    const btn = document.getElementById('theme-toggle');
+    store.setItem(THEME_KEY, theme);
+    var btn = document.getElementById('theme-toggle');
     if (!btn) return;
-    btn.innerHTML = theme === 'dark'
-      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
-      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    // Sun icon for dark mode (switch to light), moon for light (switch to dark)
+    if (theme === 'dark') {
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+      btn.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      btn.setAttribute('aria-label', 'Switch to dark mode');
+    }
   }
 
-  // Initialize theme immediately
-  setTheme(getPreferredTheme());
+  // Apply theme immediately (before DOMContentLoaded to avoid flash)
+  applyTheme(getPreferredTheme());
 
+  /* ─────────────────────────────────────────────
+     DOM READY
+  ───────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', function () {
-        const current = document.documentElement.getAttribute('data-theme');
-        setTheme(current === 'dark' ? 'light' : 'dark');
+
+    /* ── Theme toggle button ── */
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        trackEvent('click', 'ui', 'toggle_dark_mode_' + next);
       });
     }
 
-    // --- Nav scroll shadow ---
-    const nav = document.querySelector('.nav');
+    /* ── Nav scroll shadow ── */
+    var nav = document.querySelector('.nav');
     if (nav) {
-      let ticking = false;
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          window.requestAnimationFrame(function () {
-            nav.classList.toggle('scrolled', window.scrollY > 20);
-            ticking = false;
-          });
-          ticking = true;
+      var onScroll = function () {
+        if (window.scrollY > 10) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
         }
-      }, { passive: true });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // run once on load
     }
 
-    // --- Mobile menu ---
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    /* ── Mobile hamburger menu ── */
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+
     if (hamburger && mobileMenu) {
+
+      function openMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = '';
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
       hamburger.addEventListener('click', function () {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('open');
-        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        var isOpen = mobileMenu.classList.contains('open');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
 
-      // Close on link click
+      // Close on any anchor link click inside the menu
       mobileMenu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          hamburger.classList.remove('active');
-          mobileMenu.classList.remove('open');
-          document.body.style.overflow = '';
+          closeMenu();
         });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
       });
     }
 
-    // --- FAQ accordion ---
-    document.querySelectorAll('.faq__question').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const item = btn.closest('.faq__item');
-        const wasOpen = item.classList.contains('open');
+    /* ── FAQ Accordion ── */
+    var faqItems = document.querySelectorAll('.faq__item');
 
-        // Close all
-        document.querySelectorAll('.faq__item').forEach(function (el) {
-          el.classList.remove('open');
+    faqItems.forEach(function (item) {
+      var question = item.querySelector('.faq__question');
+      var answer = item.querySelector('.faq__answer');
+      if (!question || !answer) return;
+
+      question.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+
+        // Close all others
+        faqItems.forEach(function (other) {
+          if (other !== item && other.classList.contains('open')) {
+            other.classList.remove('open');
+            var otherQ = other.querySelector('.faq__question');
+            if (otherQ) otherQ.setAttribute('aria-expanded', 'false');
+          }
         });
 
-        // Toggle clicked
-        if (!wasOpen) {
+        // Toggle this one
+        if (isOpen) {
+          item.classList.remove('open');
+          question.setAttribute('aria-expanded', 'false');
+        } else {
           item.classList.add('open');
+          question.setAttribute('aria-expanded', 'true');
+          trackEvent('click', 'faq', question.querySelector('span') ? question.querySelector('span').textContent.trim().substring(0, 50) : 'question');
         }
       });
+
+      // Keyboard support: Enter / Space already trigger click on <button>
     });
 
-    // --- Smooth scroll for anchor links ---
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
+    /* ── Scroll Fade-In (IntersectionObserver) ── */
+    var fadeEls = document.querySelectorAll('.fade-in');
 
-    // --- Fallback fade-in for browsers without scroll-driven animations ---
-    if (!CSS.supports('animation-timeline', 'scroll()')) {
-      const observer = new IntersectionObserver(function (entries) {
+    if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            entry.target.classList.add('visible');
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
 
-      document.querySelectorAll('.fade-in').forEach(function (el) {
-        el.style.opacity = '0';
+      fadeEls.forEach(function (el, idx) {
+        // Stagger delay for sibling groups
+        var parent = el.parentElement;
+        var siblings = parent ? parent.querySelectorAll('.fade-in') : [];
+        var siblingIdx = Array.prototype.indexOf.call(siblings, el);
+        el.style.transitionDelay = (siblingIdx * 80) + 'ms';
         observer.observe(el);
       });
+    } else {
+      // Fallback: show all immediately
+      fadeEls.forEach(function (el) {
+        el.classList.add('visible');
+      });
     }
-  });
-})();
 
-// Contact form — AJAX submit via Formspree
-(function(){
-  const forms = [
-    { formId: 'hcr-contact-form', successId: 'hcr-form-success' }
-  ];
-  forms.forEach(({ formId, successId }) => {
-    const form = document.getElementById(formId);
-    const success = document.getElementById(successId);
-    if (!form || !success) return;
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = form.querySelector('[type="submit"]');
-      const origText = btn.textContent;
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'flex';
-        } else {
-          btn.textContent = origText;
-          btn.disabled = false;
-          alert('Something went wrong. Please try again or call us directly.');
+    /* ── Smooth Scroll for Anchor Links ── */
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = link.getAttribute('href');
+        if (href === '#' || href === '#!') return;
+        var target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        var navHeight = nav ? nav.offsetHeight : 0;
+        var top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+
+    /* ── Contact Form — Formspree AJAX ── */
+    var contactForm = document.getElementById('hcr-contact-form');
+    var formSuccess = document.getElementById('hcr-form-success');
+
+    if (contactForm && formSuccess) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var submitBtn = contactForm.querySelector('[type="submit"]');
+        var originalText = submitBtn ? submitBtn.textContent : '';
+
+        if (submitBtn) {
+          submitBtn.textContent = 'Sending…';
+          submitBtn.disabled = true;
         }
-      } catch(err) {
-        btn.textContent = origText;
-        btn.disabled = false;
-        alert('Something went wrong. Please check your connection and try again.');
+
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { Accept: 'application/json' }
+        })
+          .then(function (res) {
+            if (res.ok) {
+              contactForm.style.display = 'none';
+              formSuccess.style.display = 'flex';
+              trackEvent('form_submit', 'contact', 'hcr_contact_form_success');
+            } else {
+              if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+              }
+              alert('Something went wrong. Please try again or call (330) 203-1331.');
+              trackEvent('form_error', 'contact', 'hcr_contact_form_error');
+            }
+          })
+          .catch(function () {
+            if (submitBtn) {
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            }
+            alert('Connection error. Please check your connection or call (330) 203-1331.');
+          });
+      });
+    }
+
+    /* ── Calendly Event Tracking ── */
+    window.addEventListener('message', function (e) {
+      if (!e.data || typeof e.data !== 'object') return;
+      if (e.data.event === 'calendly.event_scheduled') {
+        trackEvent('calendly_booked', 'conversion', 'discovery_call_booked');
+        // Fire as a GA4 conversion event too
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            currency: 'USD',
+            value: 4500
+          });
+        }
       }
     });
-  });
+
+  }); // end DOMContentLoaded
+
 })();
