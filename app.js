@@ -37,6 +37,216 @@
   // Expose globally so inline onclick="" attributes can call it
   window.trackEvent = trackEvent;
 
+  /* ─────────────────────────────────────────────
+     DOM READY
+  ───────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', function () {
+
+
+    /* ── Nav scroll shadow ── */
+    var nav = document.querySelector('.nav');
+    if (nav) {
+      var onScroll = function () {
+        if (window.scrollY > 10) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // run once on load
+    }
+
+    /* ── Mobile hamburger menu ── */
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+
+    if (hamburger && mobileMenu) {
+
+      function openMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = '';
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        var isOpen = mobileMenu.classList.contains('open');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // Close on any anchor link click inside the menu
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          closeMenu();
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    }
+
+    /* ── FAQ Accordion ── */
+    var faqItems = document.querySelectorAll('.faq__item');
+
+    faqItems.forEach(function (item) {
+      var question = item.querySelector('.faq__question');
+      var answer = item.querySelector('.faq__answer');
+      if (!question || !answer) return;
+
+      question.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+
+        // Close all others
+        faqItems.forEach(function (other) {
+          if (other !== item && other.classList.contains('open')) {
+            other.classList.remove('open');
+            var otherQ = other.querySelector('.faq__question');
+            if (otherQ) otherQ.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle this one
+        if (isOpen) {
+          item.classList.remove('open');
+          question.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('open');
+          question.setAttribute('aria-expanded', 'true');
+          trackEvent('click', 'faq', question.querySelector('span') ? question.querySelector('span').textContent.trim().substring(0, 50) : 'question');
+        }
+      });
+
+      // Keyboard support: Enter / Space already trigger click on <button>
+    });
+
+    /* ── Scroll Fade-In (IntersectionObserver) ── */
+    var fadeEls = document.querySelectorAll('.fade-in');
+
+    if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      fadeEls.forEach(function (el, idx) {
+        // Stagger delay for sibling groups
+        var parent = el.parentElement;
+        var siblings = parent ? parent.querySelectorAll('.fade-in') : [];
+        var siblingIdx = Array.prototype.indexOf.call(siblings, el);
+        el.style.transitionDelay = (siblingIdx * 80) + 'ms';
+        observer.observe(el);
+      });
+    } else {
+      // Fallback: show all immediately
+      fadeEls.forEach(function (el) {
+        el.classList.add('visible');
+      });
+    }
+
+    /* ── Smooth Scroll for Anchor Links ── */
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = link.getAttribute('href');
+        if (href === '#' || href === '#!') return;
+        var target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        var navHeight = nav ? nav.offsetHeight : 0;
+        var top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+
+    /* ── Contact Form — Formspree AJAX ── */
+    var contactForm = document.getElementById('hcr-contact-form');
+    var formSuccess = document.getElementById('hcr-form-success');
+
+    if (contactForm && formSuccess) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var submitBtn = contactForm.querySelector('[type="submit"]');
+        var originalText = submitBtn ? submitBtn.textContent : '';
+
+        if (submitBtn) {
+          submitBtn.textContent = 'Sending…';
+          submitBtn.disabled = true;
+        }
+
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { Accept: 'application/json' }
+        })
+          .then(function (res) {
+            if (res.ok) {
+              contactForm.style.display = 'none';
+              formSuccess.style.display = 'flex';
+              trackEvent('form_submit', 'contact', 'hcr_contact_form_success');
+            } else {
+              if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+              }
+              alert('Something went wrong. Please try again or call (330) 203-1331.');
+              trackEvent('form_error', 'contact', 'hcr_contact_form_error');
+            }
+          })
+          .catch(function () {
+            if (submitBtn) {
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            }
+            alert('Connection error. Please check your connection or call (330) 203-1331.');
+          });
+      });
+    }
+
+    /* ── Calendly Event Tracking ── */
+    window.addEventListener('message', function (e) {
+      if (!e.data || typeof e.data !== 'object') return;
+      if (e.data.event === 'calendly.event_scheduled') {
+        trackEvent('calendly_booked', 'conversion', 'discovery_call_booked');
+        // Fire as a GA4 conversion event too
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            currency: 'USD',
+            value: 4500
+          });
+        }
+      }
+    });
+
+  }); // end DOMContentLoaded
+
+})();
+
 /* ─────────────────────────────────────────────
    EXIT INTENT POPUP
 ───────────────────────────────────────────── */
