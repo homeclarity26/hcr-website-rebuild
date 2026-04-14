@@ -428,8 +428,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(12,24,48,0.60) 0%, rgba(12,24,48,0.25) 40%, rgba(12,24,48,0.92) 100%),
-    linear-gradient(to right,  rgba(12,24,48,0.72) 0%, rgba(12,24,48,0.12) 65%, transparent 100%);
+    linear-gradient(to bottom, rgba(12,24,48,0.30) 0%, rgba(12,24,48,0.10) 40%, rgba(12,24,48,0.72) 100%),
+    linear-gradient(to right,  rgba(12,24,48,0.45) 0%, rgba(12,24,48,0.05) 65%, transparent 100%);
 }
 
 .hero--cinematic .hero__content {
