@@ -161,56 +161,20 @@
         </div>
 
         <!-- Hero Portal Screenshot — Option A -->
-        <div class="hero__mockup" aria-hidden="true">
-          <div class="hero__screen-wrap">
-
-            <!-- Floating HVAC alert chip -->
-            <div class="hero__chip hero__chip--alert">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              <div class="hero__chip-text">
-                <span class="hero__chip-label">HVAC Flagged</span>
-                <span class="hero__chip-sub">27 yrs old · Budget $9,500–$12,600</span>
-              </div>
-            </div>
-
-            <!-- Screen frame -->
-            <div class="hero__screen-frame">
-              <div class="hero__screen-bar">
-                <span class="hero__screen-dot"></span>
-                <span class="hero__screen-dot"></span>
-                <span class="hero__screen-dot"></span>
-              </div>
-              <div class="hero__screen-img-wrap">
-                <img src="assets/portal-welcome.jpg" alt="Home Clarity Portal — sample client welcome screen showing the Henderson Residence report" class="hero__screen-img" loading="eager">
-                <div class="hero__screen-fade"></div>
-              </div>
-            </div>
-
-            <!-- Floating delivery chip -->
-            <div class="hero__chip hero__chip--delivery">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <div class="hero__chip-text">
-                <span class="hero__chip-label">Delivered</span>
-                <span class="hero__chip-sub">5 business days</span>
-              </div>
-            </div>
-
+        <div class="hero__price-card hero__price-card--standalone">
+          <div class="hero__price-eyebrow mono">ONE-TIME INVESTMENT</div>
+          <div class="hero__price mono">$4,500</div>
+          <div class="hero__price-sub">No hidden fees. No upsells.</div>
+          <div class="hero__price-compare">The avg. kitchen remodel mistake costs more than this entire report.</div>
+          <div class="hero__price-trust">
+            <span class="hero__price-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>27+ years experience</span>
+            <span class="hero__price-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Delivered in 5 business days</span>
+            <span class="hero__price-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Lifetime advisory</span>
           </div>
-
-          <!-- Price card sits below the frame -->
-          <div class="hero__price-card">
-            <div class="hero__price-eyebrow mono">ONE-TIME INVESTMENT</div>
-            <div class="hero__price mono">$4,500</div>
-            <div class="hero__price-sub">No hidden fees. No upsells.</div>
-            <div class="hero__price-compare">The avg. kitchen remodel mistake costs more than this entire report.</div>
-            <div class="hero__price-trust">
-              <span class="hero__price-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>27+ years experience</span>
-              <span class="hero__price-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Delivered in 5 business days</span>
-              <span class="hero__price-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Lifetime advisory</span>
-            </div>
-          </div>
-
-
+          <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="hero__price-cta" onclick="trackEvent('click','hero_price_card_cta','schedule_visit')">
+            Schedule Your On-Site Visit
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </section>
