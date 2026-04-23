@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Home Clarity Report</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://www.homeclarityreport.com/thank-you">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Crect width='38' height='38' rx='9' fill='%230A1628'/%3E%3Cpath d='M8 19.5L19 10L30 19.5' stroke='%23B87333' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='11' y='19.5' width='16' height='10.5' rx='1' fill='%23B87333' fill-opacity='0.18' stroke='%23B87333' stroke-width='1.5'/%3E%3Crect x='16.5' y='23.5' width='5' height='6.5' rx='.75' fill='%23B87333'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="brand.css">
+  <style>
+    .ty-hero{background:var(--cream);padding:6rem 0 5rem;text-align:center;}
+    .ty-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--navy);line-height:1.25;max-width:680px;margin:1rem auto 1.25rem;}
+    .ty-hero .sub{font-size:1.0625rem;color:var(--text-muted);margin:0;}
+    .steps-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;}
+    .step-item{display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start;}
+    .step-item__num{width:3rem;height:3rem;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:0.8rem;font-weight:700;color:var(--gold);flex-shrink:0;}
+    .step-item__content h3{font-family:var(--font-body);font-size:1rem;font-weight:700;color:var(--navy);margin:0 0 0.375rem;}
+    .step-item__content p{font-size:0.9375rem;color:var(--text-body);line-height:1.7;margin:0;}
+    .reading-links{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:680px;margin:0 auto;}
+    .reading-link{display:block;background:var(--cream);border:1px solid rgba(10,22,40,0.08);border-radius:8px;padding:1.25rem 1.5rem;text-decoration:none;transition:border-color 0.15s;}
+    .reading-link:hover{border-color:var(--gold);}
+    .reading-link h3{font-family:var(--font-display);font-size:1.0625rem;font-weight:600;color:var(--navy);margin:0 0 0.25rem;}
+    .reading-link span{font-size:0.8125rem;color:var(--gold);font-weight:600;}
+    @media(max-width:540px){.reading-links{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<a href="#main" class="sr-only">Skip to main content</a>
+
+<header>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__brand" aria-label="Home Clarity Report — Home">
+        <svg width="32" height="32" viewBox="0 0 38 38" fill="none" aria-hidden="true"><rect width="38" height="38" rx="9" fill="#0A1628"/><path d="M8 19.5L19 10L30 19.5" stroke="#B87333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11" y="19.5" width="16" height="10.5" rx="1" fill="#B87333" fill-opacity="0.18" stroke="#B87333" stroke-width="1.5"/><rect x="16.5" y="23.5" width="5" height="6.5" rx=".75" fill="#B87333"/></svg>
+        <span class="nav__brand-name">Home Clarity Report</span>
+      </a>
+      <div class="nav__links">
+        <a href="/whats-included" class="nav__link">What's Included</a>
+        <a href="/how-it-works" class="nav__link">How It Works</a>
+        <a href="/vs-inspection" class="nav__link">vs. Inspection</a>
+        <a href="/meet-adam" class="nav__link">Meet Adam</a>
+        <a href="/faq" class="nav__link">FAQ</a>
+      </div>
+      <div class="nav__actions">
+        <a href="tel:+13302031331" class="nav__phone">(330) 203-1331</a>
+        <button id="hamburger" class="nav__hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button id="mobile-close" class="mobile-menu__close" aria-label="Close menu">&times;</button>
+    <a href="/" class="mobile-menu__link">Home</a>
+    <a href="/whats-included" class="mobile-menu__link">What's Included</a>
+    <a href="/how-it-works" class="mobile-menu__link">How It Works</a>
+    <a href="/vs-inspection" class="mobile-menu__link">vs. Inspection</a>
+    <a href="/meet-adam" class="mobile-menu__link">Meet Adam</a>
+    <a href="/areas-served" class="mobile-menu__link">Areas Served</a>
+    <a href="/faq" class="mobile-menu__link">FAQ</a>
+    <a href="tel:+13302031331" class="mobile-menu__phone">(330) 203-1331</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="ty-hero">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold);">Message Received</div>
+      <h1>Your request is in.<br>We'll be in touch within one business day.</h1>
+      <p class="sub">Adam reads every inquiry personally.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="h2">What to expect.</h2>
+      </div>
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-item__num">01</div>
+          <div class="step-item__content">
+            <h3>You'll receive a call or email from Adam within one business day</h3>
+            <p>To schedule your 30-minute discovery call at a time that works for you.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-item__num">02</div>
+          <div class="step-item__content">
+            <h3>On the discovery call, Adam asks about your home</h3>
+            <p>Your goals, your project list, what's been on your mind. No pitch. No pressure. Just an honest conversation about whether the Report is the right fit.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-item__num">03</div>
+          <div class="step-item__content">
+            <h3>After the call, you schedule your on-site visit</h3>
+            <p>At a time that works for you. The visit takes 2 to 3 hours at your home.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-item__num">04</div>
+          <div class="step-item__content">
+            <h3>Within 5 business days, your complete Report is delivered</h3>
+            <p>Everything documented, priced, sequenced, and ready to use. Your Home OS dashboard goes live the same day.</p>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:680px;margin:3rem auto 0;padding:2rem;background:var(--cream);border-radius:10px;text-align:center;">
+        <p style="font-size:1rem;color:var(--navy);line-height:1.75;margin:0 0 1rem;">If you have a question before your call, don't wait — reach out directly.</p>
+        <p style="font-size:1rem;font-weight:600;color:var(--navy);margin:0;"><a href="tel:+13302031331" style="color:var(--gold);font-weight:700;">(330) 203-1331</a>&nbsp;&middot;&nbsp;<a href="mailto:adam@homeclarityreport.com" style="color:var(--gold);font-weight:700;">adam@homeclarityreport.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">While You Wait</div>
+        <h2 class="h2">A few things worth reading<br>before your discovery call.</h2>
+      </div>
+      <div class="reading-links">
+        <a href="/whats-included" class="reading-link">
+          <h3>What's Included in the Report</h3>
+          <span>All 8 deliverables &rarr;</span>
+        </a>
+        <a href="/how-it-works" class="reading-link">
+          <h3>How the On-Site Visit Works</h3>
+          <span>The 4-step process &rarr;</span>
+        </a>
+        <a href="/vs-inspection" class="reading-link">
+          <h3>vs. a Home Inspection</h3>
+          <span>What's different &rarr;</span>
+        </a>
+        <a href="/meet-adam" class="reading-link">
+          <h3>Meet Adam</h3>
+          <span>27 years in Summit County &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a href="/" class="nav__brand" aria-label="Home Clarity Report — Home">
+        <svg width="32" height="32" viewBox="0 0 38 38" fill="none" aria-hidden="true"><rect width="38" height="38" rx="9" fill="#0A1628"/><path d="M8 19.5L19 10L30 19.5" stroke="#B87333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11" y="19.5" width="16" height="10.5" rx="1" fill="#B87333" fill-opacity="0.18" stroke="#B87333" stroke-width="1.5"/><rect x="16.5" y="23.5" width="5" height="6.5" rx=".75" fill="#B87333"/></svg>
+        <span class="nav__brand-name">Home Clarity Report</span>
+      </a>
+      <p class="footer__tagline">Northeast Ohio's trusted home advisor.<br>27+ years of expertise. One point of contact for life.</p>
+    </div>
+    <div class="footer__nav">
+      <div class="footer__nav-col">
+        <div class="footer__nav-label">The Report</div>
+        <a href="/whats-included">What's Included</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/vs-inspection">vs. Home Inspection</a>
+        <a href="/areas-served">Areas Served</a>
+        <a href="/faq">FAQ</a>
+      </div>
+      <div class="footer__nav-col">
+        <div class="footer__nav-label">For Homeowners</div>
+        <a href="/for-recent-buyers">Recent Home Buyers</a>
+        <a href="/for-renovation-planners">Renovation Planners</a>
+        <a href="/for-strategic-homeowners">Strategic Homeowners</a>
+      </div>
+      <div class="footer__nav-col">
+        <div class="footer__nav-label">Adam &amp; HBC</div>
+        <a href="/meet-adam">Meet Adam</a>
+        <a href="https://hometownbuildersclub.com" target="_blank" rel="noopener">Hometown Builders Club</a>
+        <a href="https://akrenovationsohio.com" target="_blank" rel="noopener">AK Renovations</a>
+      </div>
+      <div class="footer__nav-col">
+        <div class="footer__nav-label">Get Started</div>
+        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener">Book a Discovery Call</a>
+        <a href="tel:+13302031331">(330) 203-1331</a>
+        <a href="mailto:adam@homeclarityreport.com">adam@homeclarityreport.com</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>&copy; <span id="yr"></span> Hometown Builders Club LLC &middot; All rights reserved</span>
+    <div class="footer__meta"><span>Cuyahoga Falls, OH</span></div>
+  </div>
+</footer>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+var hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu'),mobileClose=document.getElementById('mobile-close');
+function openMenu(){mobileMenu.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(hamburger)hamburger.addEventListener('click',openMenu);
+if(mobileClose)mobileClose.addEventListener('click',closeMenu);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+</script>
+</body>
+</html>

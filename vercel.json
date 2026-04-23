@@ -1,74 +1,35 @@
 {
   "rewrites": [
-    {
-      "source": "/about",
-      "destination": "/about.html"
-    },
-    {
-      "source": "/what-you-get",
-      "destination": "/what-you-get.html"
-    },
-    {
-      "source": "/faq",
-      "destination": "/faq.html"
-    },
-    {
-      "source": "/contact",
-      "destination": "/contact.html"
-    },
-    {
-      "source": "/testimonials",
-      "destination": "/testimonials.html"
-    },
-    {
-      "source": "/blog",
-      "destination": "/blog/index.html"
-    },
-    {
-      "source": "/blog/how-to-vet-a-contractor",
-      "destination": "/blog/how-to-vet-a-contractor.html"
-    },
-    {
-      "source": "/blog/what-a-home-clarity-report-covers",
-      "destination": "/blog/what-a-home-clarity-report-covers.html"
-    },
-    {
-      "source": "/blog/renovation-plan-before-quotes",
-      "destination": "/blog/renovation-plan-before-quotes.html"
-    },
-    {
-      "source": "/blog/renovation-mistakes",
-      "destination": "/blog/renovation-mistakes.html"
-    },
-    {
-      "source": "/blog/home-improvement-roadmap",
-      "destination": "/blog/home-improvement-roadmap.html"
-    },
-    {
-      "source": "/demo",
-      "destination": "/demo/index.html"
-    },
-    {
-      "source": "/demo/(.*)",
-      "destination": "/demo/$1"
-    }
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/what-you-get", "destination": "/what-you-get.html" },
+    { "source": "/whats-included", "destination": "/whats-included.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" },
+    { "source": "/vs-inspection", "destination": "/vs-inspection.html" },
+    { "source": "/meet-adam", "destination": "/meet-adam.html" },
+    { "source": "/areas-served", "destination": "/areas-served.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/testimonials", "destination": "/testimonials.html" },
+    { "source": "/for-recent-buyers", "destination": "/for-recent-buyers.html" },
+    { "source": "/for-renovation-planners", "destination": "/for-renovation-planners.html" },
+    { "source": "/for-strategic-homeowners", "destination": "/for-strategic-homeowners.html" },
+    { "source": "/thank-you", "destination": "/thank-you.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/how-to-vet-a-contractor", "destination": "/blog/how-to-vet-a-contractor.html" },
+    { "source": "/blog/what-a-home-clarity-report-covers", "destination": "/blog/what-a-home-clarity-report-covers.html" },
+    { "source": "/blog/renovation-plan-before-quotes", "destination": "/blog/renovation-plan-before-quotes.html" },
+    { "source": "/blog/renovation-mistakes", "destination": "/blog/renovation-mistakes.html" },
+    { "source": "/blog/home-improvement-roadmap", "destination": "/blog/home-improvement-roadmap.html" },
+    { "source": "/demo", "destination": "/demo/index.html" },
+    { "source": "/demo/(.*)", "destination": "/demo/$1" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
   ]
