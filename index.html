@@ -19,17 +19,72 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KKHNGT001');function trackEvent(a,c,l){gtag('event',a,{event_category:c,event_label:l});}</script>
   <link rel="stylesheet" href="brand.css">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Home Clarity Report",
-    "serviceType": "Home Advisory Service",
-    "provider": {"@type": "Person", "name": "Adam Kilgore", "description": "27-year residential remodeling expert, Summit County Ohio"},
-    "areaServed": "Summit County, Ohio",
-    "description": "The Home Clarity Report gives Northeast Ohio homeowners a complete picture of their home in 5 business days — expert analysis, honest pricing, and lifetime advisory access.",
-    "offers": {"@type": "Offer", "price": "4500", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
-    "url": "https://www.homeclarityreport.com/"
-  }
+  {"@context":"https://schema.org","@graph":[
+    {
+      "@type":"Service",
+      "@id":"https://www.homeclarityreport.com/#service",
+      "name":"Home Clarity Report",
+      "serviceType":"Home Advisory Service",
+      "description":"The Home Clarity Report gives Northeast Ohio homeowners a complete picture of their home in 5 business days — expert analysis, honest pricing, and lifetime advisory access. Delivered in person by Adam Kilgore, a 27-year Summit County remodeling expert with no financial stake in what you choose.",
+      "url":"https://www.homeclarityreport.com/",
+      "provider":{
+        "@type":"Person",
+        "@id":"https://www.homeclarityreport.com/#adam",
+        "name":"Adam Kilgore",
+        "jobTitle":"Founder, Home Clarity Report",
+        "description":"27-year residential remodeling expert in Summit County, Ohio. Licensed general contractor. EPA Lead Safe Certified. Founder of Home Clarity Report and Hometown Builders Club.",
+        "telephone":"+13302031331",
+        "email":"adam@homeclarityreport.com",
+        "address":{"@type":"PostalAddress","addressLocality":"Cuyahoga Falls","addressRegion":"OH","postalCode":"44223","addressCountry":"US"},
+        "geo":{"@type":"GeoCoordinates","latitude":41.1334,"longitude":-81.4843},
+        "knowsAbout":["home renovation","residential remodeling","kitchen remodeling","bathroom remodeling","home inspection","Summit County real estate","contractor pricing","home systems assessment"],
+        "hasCredential":[
+          {"@type":"EducationalOccupationalCredential","name":"Licensed General Contractor","credentialCategory":"license","recognizedBy":{"@type":"Organization","name":"Summit County"},"identifier":"GRB130313"},
+          {"@type":"EducationalOccupationalCredential","name":"EPA Lead Safe Certified","credentialCategory":"certification","identifier":"R-I-22516-00004"}
+        ],
+        "sameAs":["https://www.hometownbuildersclub.com/meet-adam","https://akrenovationsohio.com","https://www.homeclarityreport.com/meet-adam"]
+      },
+      "offers":{
+        "@type":"Offer",
+        "price":"4500",
+        "priceCurrency":"USD",
+        "availability":"https://schema.org/InStock",
+        "url":"https://www.homeclarityreport.com/whats-included"
+      },
+      "areaServed":[
+        {"@type":"City","name":"Hudson","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County","containedInPlace":{"@type":"State","name":"Ohio"}}},
+        {"@type":"City","name":"Bath Township","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Fairlawn","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Richfield","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Cuyahoga Falls","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Stow","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Copley","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Silver Lake","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Peninsula","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"City","name":"Tallmadge","containedInPlace":{"@type":"AdministrativeArea","name":"Summit County"}},
+        {"@type":"AdministrativeArea","name":"Summit County, Ohio"},
+        {"@type":"AdministrativeArea","name":"Medina County, Ohio"},
+        {"@type":"AdministrativeArea","name":"Portage County, Ohio"}
+      ],
+      "aggregateRating":{
+        "@type":"AggregateRating",
+        "ratingValue":"5.0",
+        "bestRating":"5",
+        "worstRating":"1",
+        "ratingCount":"47",
+        "reviewCount":"47"
+      }
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://www.homeclarityreport.com/#webpage",
+      "url":"https://www.homeclarityreport.com/",
+      "name":"Home Clarity Report — $4,500 Home Advisory | Summit County Ohio",
+      "description":"A complete picture of your home in 5 business days. Expert analysis, honest pricing, vetted contractors — delivered in person by a 27-year Summit County remodeling expert.",
+      "isPartOf":{"@type":"WebSite","name":"Home Clarity Report","url":"https://www.homeclarityreport.com/","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.homeclarityreport.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}},
+      "speakable":{"@type":"SpeakableSpecification","cssSelector":[".hcr-hero__h1",".hcr-hero__outcome"]}
+    }
+  ]}
   </script>
   <style>
     .hcr-hero{background:var(--navy);padding:6rem 0 5rem;}
