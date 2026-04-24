@@ -152,9 +152,18 @@ input, textarea, select { font: inherit; color: inherit; }
 .nav__brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   text-decoration: none;
   flex-shrink: 0;
+}
+.nav__brand img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+.footer__brand .nav__brand img {
+  height: 38px;
+  width: auto;
 }
 .nav__brand-name {
   font-family: var(--font-display);
