@@ -34,6 +34,10 @@
     .faq-item__answer p{font-size:0.9375rem;line-height:1.8;color:var(--text-body);margin:0 0 1rem;}
     .faq-item__answer p:last-child{margin:0;}
     .faq-item__answer a{color:var(--gold);font-weight:600;}
+    @media(max-width:460px){
+      .faq-item__answer{padding:0 0 1.25rem 0;}
+      .faq-item__trigger{font-size:0.9375rem;padding:1.125rem 0;}
+    }
   </style>
 </head>
 <body>
@@ -67,7 +71,7 @@
     <a href="/vs-inspection" class="mobile-menu__link">vs. Inspection</a>
     <a href="/meet-adam" class="mobile-menu__link">Meet Adam</a>
     <a href="/areas-served" class="mobile-menu__link">Areas Served</a>
-    <a href="/faq" class="mobile-menu__link">FAQ</a>
+    <a href="/faq" class="mobile-menu__link mobile-menu__link--active">FAQ</a>
     <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="mobile-menu__cta">Book a Discovery Call</a>
     <a href="tel:+13302031331" class="mobile-menu__phone">(330) 203-1331</a>
   </div>

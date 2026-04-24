@@ -44,7 +44,13 @@
     .gap-item__num{font-family:var(--font-mono);font-size:0.8rem;font-weight:700;color:var(--gold);}
     .gap-item__content h3{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--navy);margin:0 0 0.5rem;}
     .gap-item__content p{font-size:0.9375rem;line-height:1.75;color:var(--navy);margin:0;}
-    @media(max-width:720px){.two-col{grid-template-columns:1fr;}.comparison-table{font-size:0.8125rem;}.comparison-table th,.comparison-table td{padding:0.625rem 0.75rem;}}
+    @media(max-width:720px){.two-col{grid-template-columns:1fr;gap:2rem;}.comparison-table{font-size:0.8125rem;}.comparison-table th,.comparison-table td{padding:0.625rem 0.75rem;}}
+    @media(max-width:460px){
+      .two-col{gap:1.5rem;}
+      .comparison-table th,.comparison-table td{padding:0.5rem 0.625rem;font-size:0.75rem;}
+      .gap-item{gap:0.625rem;}
+      .gap-item__content h3{font-size:1rem;}
+    }
   </style>
 </head>
 <body>
@@ -75,7 +81,7 @@
     <a href="/" class="mobile-menu__link">Home</a>
     <a href="/whats-included" class="mobile-menu__link">What's Included</a>
     <a href="/how-it-works" class="mobile-menu__link">How It Works</a>
-    <a href="/vs-inspection" class="mobile-menu__link">vs. Inspection</a>
+    <a href="/vs-inspection" class="mobile-menu__link mobile-menu__link--active">vs. Inspection</a>
     <a href="/meet-adam" class="mobile-menu__link">Meet Adam</a>
     <a href="/areas-served" class="mobile-menu__link">Areas Served</a>
     <a href="/faq" class="mobile-menu__link">FAQ</a>

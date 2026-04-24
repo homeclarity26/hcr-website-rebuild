@@ -26,7 +26,7 @@
     .step-section.bg-white{background:#fff;}
     .step-section.bg-cream{background:var(--cream);}
     .step-inner{max-width:820px;margin:0 auto;padding:0 2rem;}
-    .step-indicator{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+    .step-indicator{display:flex;align-items:center;gap:0.625rem;margin-bottom:1.5rem;flex-wrap:wrap;}
     .step-indicator__num{font-family:var(--font-mono);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(184,115,51,0.1);border:1px solid rgba(184,115,51,0.25);border-radius:20px;padding:0.3rem 0.875rem;}
     .step-indicator__duration{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);}
     .step-h2{font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:600;color:var(--navy);margin:0 0 1.5rem;line-height:1.2;}
@@ -49,6 +49,10 @@
     .dq-item{display:flex;align-items:flex-start;gap:0.625rem;font-size:0.9375rem;color:var(--navy);line-height:1.5;}
     .dq-item::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
     @media(max-width:600px){.deliverables-quick,.timeline-row{grid-template-columns:1fr;}}
+    @media(max-width:460px){
+      .step-inner{padding:0 1.25rem;}
+      .timeline-box{padding:1.25rem 1.25rem;}
+    }
   </style>
 </head>
 <body>
@@ -78,7 +82,7 @@
     <button id="mobile-close" class="mobile-menu__close" aria-label="Close menu">&times;</button>
     <a href="/" class="mobile-menu__link">Home</a>
     <a href="/whats-included" class="mobile-menu__link">What's Included</a>
-    <a href="/how-it-works" class="mobile-menu__link">How It Works</a>
+    <a href="/how-it-works" class="mobile-menu__link mobile-menu__link--active">How It Works</a>
     <a href="/vs-inspection" class="mobile-menu__link">vs. Inspection</a>
     <a href="/meet-adam" class="mobile-menu__link">Meet Adam</a>
     <a href="/areas-served" class="mobile-menu__link">Areas Served</a>
