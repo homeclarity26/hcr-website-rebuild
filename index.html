@@ -118,34 +118,6 @@
       .hcr-hero__spec{padding:0.875rem 1rem;}
       .hcr-hero__spec-label{font-size:0.9rem;line-height:1.4;}
     }
-    /* --- HERO ENTRANCE ANIMATIONS ----------------------------- */
-    @media(prefers-reduced-motion:no-preference){
-      @keyframes hero-fade-up{
-        from{opacity:0;transform:translateY(14px);}
-        to{opacity:1;transform:none;}
-      }
-      .hcr-hero__eyebrow,
-      .hcr-hero__h1,
-      .hcr-hero__outcome,
-      .hcr-hero__cta-row,
-      .hcr-hero__price,
-      .hcr-hero__spec{
-        animation:hero-fade-up 0.5s cubic-bezier(0.22,0.61,0.36,1) both;
-      }
-      .hcr-hero__eyebrow  { animation-delay:0ms; }
-      .hcr-hero__h1       { animation-delay:130ms; }
-      .hcr-hero__outcome  { animation-delay:290ms; }
-      .hcr-hero__cta-row  { animation-delay:430ms; }
-      .hcr-hero__price    { animation-delay:520ms; }
-      .hcr-hero__specs .hcr-hero__spec:nth-child(1){animation-delay:200ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(2){animation-delay:270ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(3){animation-delay:340ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(4){animation-delay:410ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(5){animation-delay:480ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(6){animation-delay:550ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(7){animation-delay:620ms;}
-      .hcr-hero__specs .hcr-hero__spec:nth-child(8){animation-delay:690ms;}
-    }
   </style>
 </head>
 <body>

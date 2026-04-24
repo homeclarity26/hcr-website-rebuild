@@ -949,7 +949,15 @@ input, textarea, select { font: inherit; color: inherit; }
 .mobile-menu.is-open { display: flex; }
 
 /* Nav active state */
-.nav__link--active { color: var(--gold); font-weight: 600; }
+.nav__link--active {
+  color: var(--gold);
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+/* Mobile menu active state */
+.mobile-menu__link--active { color: var(--gold); }
 
 /* Section header grouping */
 .section-header { margin-bottom: 3rem; max-width: 760px; }
@@ -1078,4 +1086,58 @@ input, textarea, select { font: inherit; color: inherit; }
   .hero__cta-row { flex-direction: column; align-items: flex-start; }
   .btn { width: 100%; justify-content: center; }
   .cta-band__options .btn { width: auto; }
+}
+
+/* --- HERO ENTRANCE ANIMATIONS -------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Homepage hero (.hcr-hero__* classes) */
+  .hcr-hero__eyebrow,
+  .hcr-hero__h1,
+  .hcr-hero__outcome,
+  .hcr-hero__cta-row,
+  .hcr-hero__price,
+  .hcr-hero__specs .hcr-hero__spec {
+    animation: hero-fade-up 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .hcr-hero__eyebrow { animation-delay: 0ms; }
+  .hcr-hero__h1      { animation-delay: 120ms; }
+  .hcr-hero__outcome { animation-delay: 280ms; }
+  .hcr-hero__cta-row { animation-delay: 400ms; }
+  .hcr-hero__price   { animation-delay: 480ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(1) { animation-delay: 200ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(2) { animation-delay: 270ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(3) { animation-delay: 340ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(4) { animation-delay: 410ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(5) { animation-delay: 480ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(6) { animation-delay: 550ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(7) { animation-delay: 620ms; }
+  .hcr-hero__specs .hcr-hero__spec:nth-child(8) { animation-delay: 690ms; }
+
+  /* Split-hero pattern (.hero--split) for any future inner pages */
+  .hero--split .hero__split-eyebrow,
+  .hero--split .hero__split-h1,
+  .hero--split .hero__split-subhead,
+  .hero--split .hero__split-cta-row,
+  .hero--split .hero__split-price,
+  .hero--split .hero__spec-card {
+    animation: hero-fade-up 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .hero--split .hero__split-eyebrow  { animation-delay: 0ms; }
+  .hero--split .hero__split-h1       { animation-delay: 120ms; }
+  .hero--split .hero__split-subhead  { animation-delay: 280ms; }
+  .hero--split .hero__split-cta-row  { animation-delay: 400ms; }
+  .hero--split .hero__split-price    { animation-delay: 480ms; }
+  .hero--split .hero__spec-card:nth-child(1) { animation-delay: 200ms; }
+  .hero--split .hero__spec-card:nth-child(2) { animation-delay: 270ms; }
+  .hero--split .hero__spec-card:nth-child(3) { animation-delay: 340ms; }
+  .hero--split .hero__spec-card:nth-child(4) { animation-delay: 410ms; }
+  .hero--split .hero__spec-card:nth-child(5) { animation-delay: 480ms; }
+  .hero--split .hero__spec-card:nth-child(6) { animation-delay: 550ms; }
+  .hero--split .hero__spec-card:nth-child(7) { animation-delay: 620ms; }
+  .hero--split .hero__spec-card:nth-child(8) { animation-delay: 690ms; }
 }
