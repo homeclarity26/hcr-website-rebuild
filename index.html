@@ -32,28 +32,21 @@
   }
   </script>
   <style>
-    .hcr-hero{background:var(--cream);padding:5rem 0 4rem;}
-    .hcr-hero__inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;padding:0 2rem;}
-    .hcr-hero__eyebrow{font-family:var(--font-mono);font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
-    .hcr-hero__h1{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.25rem);font-weight:700;color:var(--navy);line-height:1.08;margin:0 0 1.5rem;}
-    .hcr-hero__sub{font-size:1.125rem;line-height:1.75;color:var(--navy);max-width:520px;margin:0 0 2rem;}
-    .hcr-hero__ctas{display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start;}
-    .hcr-hero__ctas .btn{margin:0;}
-    .hcr-hero__secondary{font-size:0.9375rem;color:var(--navy);text-decoration:none;font-weight:600;border-bottom:1px solid var(--navy);padding-bottom:1px;}
-    .hcr-hero__secondary:hover{color:var(--gold);border-color:var(--gold);}
-    .hcr-hero__trust{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;}
-    .hcr-hero__trust-item{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(10,22,40,0.55);}
-    .hcr-hero__trust-item span{display:block;font-size:0.875rem;font-weight:600;color:var(--navy);letter-spacing:0;text-transform:none;font-family:var(--font-body);margin-bottom:1px;}
-    .hcr-hero__trust-divider{width:1px;background:rgba(10,22,40,0.15);}
-    .hcr-hero__price-note{margin-top:1.5rem;font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.06em;color:var(--gold);font-weight:500;}
-    .hcr-hero__img-col{border-radius:12px;min-height:420px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(10,22,40,0.1);}
-    .hcr-hero__img-col-inner{padding:2.5rem;width:100%;}
-    .hcr-hero__stat-list{display:flex;flex-direction:column;gap:0;}
-    .hcr-hero__stat{display:flex;align-items:baseline;gap:1rem;padding:1.5rem 0;border-bottom:1px solid rgba(10,22,40,0.08);}
-    .hcr-hero__stat:first-child{padding-top:0;}
-    .hcr-hero__stat:last-child{border-bottom:none;padding-bottom:0;}
-    .hcr-hero__stat-num{font-family:var(--font-display);font-size:2.25rem;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:4.5rem;}
-    .hcr-hero__stat-label{font-family:var(--font-mono);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(10,22,40,0.5);line-height:1.4;}
+    .hcr-hero{background:var(--navy);padding:5.5rem 0 4.5rem;}
+    .hcr-hero__inner{max-width:920px;margin:0 auto;padding:0 2rem;}
+    .hcr-hero__eyebrow{font-family:var(--font-mono);font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+    .hcr-hero__h1{font-family:var(--font-display);font-size:clamp(2.75rem,6vw,5rem);font-weight:700;color:var(--cream);line-height:1.05;margin:0 0 1.75rem;}
+    .hcr-hero__outcome{font-size:1.125rem;line-height:1.8;color:rgba(237,233,225,0.75);max-width:680px;margin:0 0 2.5rem;}
+    .hcr-hero__delivers{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(237,233,225,0.1);border-radius:8px;overflow:hidden;margin-bottom:3rem;}
+    .hcr-hero__deliver{padding:1.25rem 1.125rem;border-right:1px solid rgba(237,233,225,0.08);border-bottom:1px solid rgba(237,233,225,0.08);}
+    .hcr-hero__deliver:nth-child(4n){border-right:none;}
+    .hcr-hero__deliver:nth-child(n+5){border-bottom:none;}
+    .hcr-hero__deliver-num{font-family:var(--font-mono);font-size:0.6rem;font-weight:700;letter-spacing:0.14em;color:var(--gold);display:block;margin-bottom:0.4rem;}
+    .hcr-hero__deliver-label{font-size:0.875rem;color:rgba(237,233,225,0.78);line-height:1.4;}
+    .hcr-hero__cta-row{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap;}
+    .hcr-hero__link{font-size:0.9375rem;font-weight:600;color:rgba(237,233,225,0.65);text-decoration:none;border-bottom:1px solid rgba(237,233,225,0.25);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;}
+    .hcr-hero__link:hover{color:var(--gold);border-color:var(--gold);}
+    .hcr-hero__price{margin-top:1.25rem;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;color:rgba(237,233,225,0.32);}
     .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
     .step-card{position:relative;}
     .step-num{font-family:var(--font-mono);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem;}
@@ -103,9 +96,18 @@
     .guarantee-section p{font-size:1.125rem;color:rgba(237,233,225,0.75);max-width:580px;margin:0 auto;line-height:1.7;}
     .hbc-section{background:var(--cream);padding:5rem 0;}
     @media(max-width:900px){
-      .hcr-hero__inner,.steps-grid,.problem-grid,.deliverables-grid,.reframe-grid,.archetype-grid,.testimonials-grid,.contact-form-grid{grid-template-columns:1fr;}
-      .hcr-hero__img-col{display:none;}
+      .steps-grid,.problem-grid,.deliverables-grid,.reframe-grid,.archetype-grid,.testimonials-grid,.contact-form-grid{grid-template-columns:1fr;}
       .contact-form-field.full{grid-column:span 1;}
+      .hcr-hero__delivers{grid-template-columns:repeat(2,1fr);}
+      .hcr-hero__deliver:nth-child(4n){border-right:1px solid rgba(237,233,225,0.08);}
+      .hcr-hero__deliver:nth-child(2n){border-right:none;}
+      .hcr-hero__deliver:nth-child(n+5){border-bottom:1px solid rgba(237,233,225,0.08);}
+      .hcr-hero__deliver:nth-child(n+7){border-bottom:none;}
+    }
+    @media(max-width:520px){
+      .hcr-hero{padding:4rem 0 3.5rem;}
+      .hcr-hero__delivers{grid-template-columns:1fr 1fr;}
+      .hcr-hero__cta-row{flex-direction:column;align-items:flex-start;gap:1rem;}
     }
   </style>
 </head>
@@ -128,7 +130,7 @@
       </div>
       <div class="nav__actions">
         <a href="tel:+13302031331" class="nav__phone">(330) 203-1331</a>
-        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary nav__cta" onclick="trackEvent('click','nav_cta','book_visit')">Book Your On-Site Visit — $4,500</a>
+        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary nav__cta" onclick="trackEvent('click','nav_cta','book_visit')">Book a Discovery Call</a>
         <button id="hamburger" class="nav__hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -142,7 +144,7 @@
     <a href="/meet-adam" class="mobile-menu__link">Meet Adam</a>
     <a href="/areas-served" class="mobile-menu__link">Areas Served</a>
     <a href="/faq" class="mobile-menu__link">FAQ</a>
-    <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="mobile-menu__cta">Book Your On-Site Visit — $4,500</a>
+    <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="mobile-menu__cta">Book a Discovery Call</a>
     <a href="tel:+13302031331" class="mobile-menu__phone">(330) 203-1331</a>
   </div>
 </header>
@@ -152,47 +154,24 @@
   <!-- HERO -->
   <section class="hcr-hero" id="hero">
     <div class="hcr-hero__inner">
-      <div class="hcr-hero__text">
-        <div class="hcr-hero__eyebrow">Summit County &middot; Northeast Ohio</div>
-        <h1 class="hcr-hero__h1">The instruction manual<br>your home didn't<br><em>come with.</em></h1>
-        <p class="hcr-hero__sub">In 5 business days, Adam walks your home, documents every room in 3D, assesses every system, and hands you the complete picture: what your home needs, what order to do it in, what each project will actually cost in Summit County in 2026, and which contractors you can trust. No sales pitch. No conflict of interest. Just the right answer.</p>
-        <div class="hcr-hero__ctas">
-          <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','hero_cta','book_visit')">Book Your On-Site Visit — $4,500</a>
-          <a href="/whats-included" class="hcr-hero__secondary">See exactly what's inside the Report &rarr;</a>
-        </div>
-        <div class="hcr-hero__trust">
-          <div class="hcr-hero__trust-item"><span>27 Years</span>in Summit County</div>
-          <div class="hcr-hero__trust-divider"></div>
-          <div class="hcr-hero__trust-item"><span>400+ Homes</span>Advised</div>
-          <div class="hcr-hero__trust-divider"></div>
-          <div class="hcr-hero__trust-item"><span>5 Business Days</span>Delivery</div>
-          <div class="hcr-hero__trust-divider"></div>
-          <div class="hcr-hero__trust-item"><span>Lifetime</span>Advisory Included</div>
-        </div>
-        <div class="hcr-hero__price-note">$4,500 &middot; One time &middot; No subscriptions &middot; No hidden fees</div>
+      <div class="hcr-hero__eyebrow">Summit County &middot; Northeast Ohio</div>
+      <h1 class="hcr-hero__h1">The instruction manual<br>your home didn't<br><em>come with.</em></h1>
+      <p class="hcr-hero__outcome">In 5 business days, Adam personally walks your home and delivers 8 distinct documents — from architect-grade floor plans and a full 3D scan to honest project pricing and vetted contractor introductions. No conflict of interest. No one selling you on work. Just the complete picture of your home, built for every decision you'll make in the years ahead.</p>
+      <div class="hcr-hero__delivers" role="list" aria-label="What you receive">
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">01</span><span class="hcr-hero__deliver-label">30–50 page written analysis of your home</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">02</span><span class="hcr-hero__deliver-label">Architect-grade floor plans, accurate to &#x215B;&Prime;</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">03</span><span class="hcr-hero__deliver-label">Full 3D exterior model &amp; measurements</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">04</span><span class="hcr-hero__deliver-label">360&deg; photo tour of every room</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">05</span><span class="hcr-hero__deliver-label">Real 2026 Summit County project pricing</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">06</span><span class="hcr-hero__deliver-label">Complete owner&rsquo;s manuals for every system</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">07</span><span class="hcr-hero__deliver-label">Written scopes contractors bid from directly</span></div>
+        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">08</span><span class="hcr-hero__deliver-label">Lifetime Home OS dashboard &amp; advisor access</span></div>
       </div>
-      <div class="hcr-hero__img-col" aria-hidden="true">
-        <div class="hcr-hero__img-col-inner">
-          <div class="hcr-hero__stat-list">
-            <div class="hcr-hero__stat">
-              <div class="hcr-hero__stat-num">27</div>
-              <div class="hcr-hero__stat-label">Years of residential remodeling<br>in Northeast Ohio</div>
-            </div>
-            <div class="hcr-hero__stat">
-              <div class="hcr-hero__stat-num">400+</div>
-              <div class="hcr-hero__stat-label">Homes documented<br>and advised</div>
-            </div>
-            <div class="hcr-hero__stat">
-              <div class="hcr-hero__stat-num">5</div>
-              <div class="hcr-hero__stat-label">Business days from site visit<br>to full Report delivery</div>
-            </div>
-            <div class="hcr-hero__stat">
-              <div class="hcr-hero__stat-num">$4,500</div>
-              <div class="hcr-hero__stat-label">One-time investment — no<br>subscriptions, no hidden fees</div>
-            </div>
-          </div>
-        </div>
+      <div class="hcr-hero__cta-row">
+        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','hero_cta','book_visit')">Book a Discovery Call</a>
+        <a href="/whats-included" class="hcr-hero__link">See exactly what&rsquo;s inside &rarr;</a>
       </div>
+      <p class="hcr-hero__price">$4,500 &middot; one-time &middot; no subscriptions &middot; delivered in 5 business days</p>
     </div>
   </section>
 
@@ -231,7 +210,7 @@
       </div>
       <div style="text-align:center;margin-top:3rem;">
         <div style="font-family:var(--font-mono);font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1.5rem;">$4,500 total &middot; No subscriptions &middot; No hidden fees</div>
-        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','how_cta','book_visit')">Book Your On-Site Visit — $4,500</a>
+        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','how_cta','book_visit')">Book a Discovery Call</a>
       </div>
     </div>
   </section>
@@ -473,7 +452,7 @@
           <div class="eyebrow" style="color:var(--gold);">Ready?</div>
           <h2 class="h2" style="color:var(--cream);">Ready to know your home at a deeper level?</h2>
           <p style="font-size:1.0625rem;color:rgba(237,233,225,0.75);line-height:1.75;margin:1.5rem 0;">The first step is a 30-minute discovery call. Free, no obligation, available this week.</p>
-          <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','final_cta','book_visit')">Book Your On-Site Visit — $4,500</a>
+          <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','final_cta','book_visit')">Book a Discovery Call</a>
           <p style="margin-top:1rem;font-size:0.9375rem;color:rgba(237,233,225,0.55);">Or call Adam directly: <a href="tel:+13302031331" style="color:var(--gold);font-weight:600;">(330) 203-1331</a></p>
         </div>
         <div style="background:rgba(237,233,225,0.05);border:1px solid rgba(237,233,225,0.1);border-radius:10px;padding:2rem;">
