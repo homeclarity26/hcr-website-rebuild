@@ -32,21 +32,23 @@
   }
   </script>
   <style>
-    .hcr-hero{background:var(--navy);padding:5.5rem 0 4.5rem;}
-    .hcr-hero__inner{max-width:920px;margin:0 auto;padding:0 2rem;}
-    .hcr-hero__eyebrow{font-family:var(--font-mono);font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
-    .hcr-hero__h1{font-family:var(--font-display);font-size:clamp(2.75rem,6vw,5rem);font-weight:700;color:var(--cream);line-height:1.05;margin:0 0 1.75rem;}
-    .hcr-hero__outcome{font-size:1.125rem;line-height:1.8;color:rgba(237,233,225,0.75);max-width:680px;margin:0 0 2.5rem;}
-    .hcr-hero__delivers{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(237,233,225,0.1);border-radius:8px;overflow:hidden;margin-bottom:3rem;}
-    .hcr-hero__deliver{padding:1.25rem 1.125rem;border-right:1px solid rgba(237,233,225,0.08);border-bottom:1px solid rgba(237,233,225,0.08);}
-    .hcr-hero__deliver:nth-child(4n){border-right:none;}
-    .hcr-hero__deliver:nth-child(n+5){border-bottom:none;}
-    .hcr-hero__deliver-num{font-family:var(--font-mono);font-size:0.6rem;font-weight:700;letter-spacing:0.14em;color:var(--gold);display:block;margin-bottom:0.4rem;}
-    .hcr-hero__deliver-label{font-size:0.875rem;color:rgba(237,233,225,0.78);line-height:1.4;}
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hcr-hero{background:var(--navy);padding:6rem 0 5rem;}
+    .hcr-hero__inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;display:grid;grid-template-columns:55fr 45fr;gap:4.5rem;align-items:start;}
+    .hcr-hero__left{display:flex;flex-direction:column;}
+    .hcr-hero__eyebrow{font-family:var(--font-mono);font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.75rem;}
+    .hcr-hero__h1{font-family:var(--font-display);font-size:clamp(3.25rem,5.5vw,5.5rem);font-weight:700;color:var(--cream);line-height:1.0;margin:0 0 2rem;}
+    .hcr-hero__h1 em{font-style:italic;font-weight:400;}
+    .hcr-hero__outcome{font-size:1.0625rem;line-height:1.8;color:rgba(237,233,225,0.72);max-width:480px;margin:0 0 2.75rem;}
     .hcr-hero__cta-row{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap;}
-    .hcr-hero__link{font-size:0.9375rem;font-weight:600;color:rgba(237,233,225,0.65);text-decoration:none;border-bottom:1px solid rgba(237,233,225,0.25);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;}
+    .hcr-hero__link{font-size:0.9375rem;font-weight:600;color:rgba(237,233,225,0.6);text-decoration:none;border-bottom:1px solid rgba(237,233,225,0.22);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;}
     .hcr-hero__link:hover{color:var(--gold);border-color:var(--gold);}
-    .hcr-hero__price{margin-top:1.25rem;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;color:rgba(237,233,225,0.32);}
+    .hcr-hero__price{margin-top:1.5rem;font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.09em;color:rgba(237,233,225,0.28);}
+    /* ── SPEC CARDS ───────────────────────────────────────── */
+    .hcr-hero__specs{display:grid;grid-template-columns:1fr 1fr;gap:0.625rem;}
+    .hcr-hero__spec{background:rgba(255,255,255,0.055);border-top:2px solid var(--gold);border-radius:6px;padding:1.375rem 1.375rem 1.25rem;}
+    .hcr-hero__spec-num{font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.16em;color:var(--gold);display:block;}
+    .hcr-hero__spec-label{font-family:var(--font-display);font-size:0.9375rem;font-weight:600;color:var(--cream);margin-top:0.4rem;line-height:1.32;display:block;}
     .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
     .step-card{position:relative;}
     .step-num{font-family:var(--font-mono);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem;}
@@ -98,15 +100,12 @@
     @media(max-width:900px){
       .steps-grid,.problem-grid,.deliverables-grid,.reframe-grid,.archetype-grid,.testimonials-grid,.contact-form-grid{grid-template-columns:1fr;}
       .contact-form-field.full{grid-column:span 1;}
-      .hcr-hero__delivers{grid-template-columns:repeat(2,1fr);}
-      .hcr-hero__deliver:nth-child(4n){border-right:1px solid rgba(237,233,225,0.08);}
-      .hcr-hero__deliver:nth-child(2n){border-right:none;}
-      .hcr-hero__deliver:nth-child(n+5){border-bottom:1px solid rgba(237,233,225,0.08);}
-      .hcr-hero__deliver:nth-child(n+7){border-bottom:none;}
+      .hcr-hero__inner{grid-template-columns:1fr;gap:3rem;}
+      .hcr-hero__specs{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:520px){
       .hcr-hero{padding:4rem 0 3.5rem;}
-      .hcr-hero__delivers{grid-template-columns:1fr 1fr;}
+      .hcr-hero__specs{grid-template-columns:1fr 1fr;}
       .hcr-hero__cta-row{flex-direction:column;align-items:flex-start;gap:1rem;}
     }
   </style>
@@ -154,24 +153,55 @@
   <!-- HERO -->
   <section class="hcr-hero" id="hero">
     <div class="hcr-hero__inner">
-      <div class="hcr-hero__eyebrow">Summit County &middot; Northeast Ohio</div>
-      <h1 class="hcr-hero__h1">The instruction manual<br>your home didn't<br><em>come with.</em></h1>
-      <p class="hcr-hero__outcome">In 5 business days, Adam personally walks your home and delivers 8 distinct documents — from architect-grade floor plans and a full 3D scan to honest project pricing and vetted contractor introductions. No conflict of interest. No one selling you on work. Just the complete picture of your home, built for every decision you'll make in the years ahead.</p>
-      <div class="hcr-hero__delivers" role="list" aria-label="What you receive">
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">01</span><span class="hcr-hero__deliver-label">30–50 page written analysis of your home</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">02</span><span class="hcr-hero__deliver-label">Architect-grade floor plans, accurate to &#x215B;&Prime;</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">03</span><span class="hcr-hero__deliver-label">Full 3D exterior model &amp; measurements</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">04</span><span class="hcr-hero__deliver-label">360&deg; photo tour of every room</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">05</span><span class="hcr-hero__deliver-label">Real 2026 Summit County project pricing</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">06</span><span class="hcr-hero__deliver-label">Complete owner&rsquo;s manuals for every system</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">07</span><span class="hcr-hero__deliver-label">Written scopes contractors bid from directly</span></div>
-        <div class="hcr-hero__deliver" role="listitem"><span class="hcr-hero__deliver-num">08</span><span class="hcr-hero__deliver-label">Lifetime Home OS dashboard &amp; advisor access</span></div>
+
+      <!-- LEFT: Headline + subhead + CTA -->
+      <div class="hcr-hero__left">
+        <div class="hcr-hero__eyebrow">Summit County &middot; Northeast Ohio</div>
+        <h1 class="hcr-hero__h1">The instruction manual your home didn&rsquo;t <em>come with.</em></h1>
+        <p class="hcr-hero__outcome">In 5 business days, Adam personally walks your home and delivers 8 distinct documents — from architect-grade floor plans and a full 3D scan to honest project pricing and vetted contractor introductions. No conflict of interest. No one selling you on work. Just the complete picture of your home, built for every decision you'll make in the years ahead.</p>
+        <div class="hcr-hero__cta-row">
+          <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','hero_cta','book_visit')">Book a Discovery Call</a>
+          <a href="/whats-included" class="hcr-hero__link">See exactly what&rsquo;s inside &rarr;</a>
+        </div>
+        <p class="hcr-hero__price">$4,500 &middot; one-time &middot; delivered in 5 business days</p>
       </div>
-      <div class="hcr-hero__cta-row">
-        <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="btn btn-primary" onclick="trackEvent('click','hero_cta','book_visit')">Book a Discovery Call</a>
-        <a href="/whats-included" class="hcr-hero__link">See exactly what&rsquo;s inside &rarr;</a>
+
+      <!-- RIGHT: 8 deliverable spec cards -->
+      <div class="hcr-hero__specs" role="list" aria-label="What you receive">
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">01</span>
+          <span class="hcr-hero__spec-label">30&ndash;50 section digital interactive report, live in your custom client portal with built-in AI assistant trained on your home</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">02</span>
+          <span class="hcr-hero__spec-label">Architect-grade floor plans, accurate to &#x215B;&Prime;</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">03</span>
+          <span class="hcr-hero__spec-label">Full 3D exterior model &amp; measurements</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">04</span>
+          <span class="hcr-hero__spec-label">360&deg; photo tour of every room</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">05</span>
+          <span class="hcr-hero__spec-label">Pricing sourced from 27 years of Summit County trade relationships &mdash; accurate for every project</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">06</span>
+          <span class="hcr-hero__spec-label">Complete owner&rsquo;s manual and product knowledge base for every system and appliance</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">07</span>
+          <span class="hcr-hero__spec-label">Written scopes contractors bid from directly</span>
+        </div>
+        <div class="hcr-hero__spec" role="listitem">
+          <span class="hcr-hero__spec-num">08</span>
+          <span class="hcr-hero__spec-label">Lifetime Home OS dashboard &amp; advisor access</span>
+        </div>
       </div>
-      <p class="hcr-hero__price">$4,500 &middot; one-time &middot; no subscriptions &middot; delivered in 5 business days</p>
+
     </div>
   </section>
 
