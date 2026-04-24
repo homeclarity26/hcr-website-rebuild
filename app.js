@@ -84,6 +84,14 @@
         }
       });
 
+      // Close button inside mobile menu
+      var mobileClose = document.getElementById('mobile-close');
+      if (mobileClose) {
+        mobileClose.addEventListener('click', function () {
+          closeMenu();
+        });
+      }
+
       // Close on any anchor link click inside the menu
       mobileMenu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {

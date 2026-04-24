@@ -74,9 +74,10 @@
         <img src="/assets/hcr-logo-horizontal-white.png" alt="Home Clarity Report" height="36" style="display:block;">
       </a>
       <div class="nav__links">
-        <a href="/about" class="nav__link">About Adam</a>
-        <a href="/what-you-get" class="nav__link">What You Get</a>
-        <a href="/#process" class="nav__link">How It Works</a>
+        <a href="/whats-included" class="nav__link">What's Included</a>
+        <a href="/how-it-works" class="nav__link">How It Works</a>
+        <a href="/vs-inspection" class="nav__link">vs. Inspection</a>
+        <a href="/meet-adam" class="nav__link">Meet Adam</a>
         <a href="/faq" class="nav__link">FAQ</a>
         <a href="/blog" class="nav__link nav__link--active">Blog</a>
       </div>
@@ -90,14 +91,18 @@
       </div>
     </div>
   </nav>
-  <div id="mobile-menu" class="mobile-menu" role="menu">
-    <a href="/about" class="mobile-menu__link" role="menuitem">About Adam</a>
-    <a href="/what-you-get" class="mobile-menu__link" role="menuitem">What You Get</a>
-    <a href="/#process" class="mobile-menu__link" role="menuitem">How It Works</a>
-    <a href="/faq" class="mobile-menu__link" role="menuitem">FAQ</a>
-    <a href="/blog" class="mobile-menu__link" role="menuitem">Blog</a>
-    <a href="tel:+13302031331" class="mobile-menu__link" role="menuitem">(330) 203-1331</a>
-    <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="mobile-menu__link mobile-menu__cta" role="menuitem" onclick="trackEvent('click','mobile_nav_cta','book_visit')">Book Your Visit →</a>
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button id="mobile-close" class="mobile-menu__close" aria-label="Close menu">&times;</button>
+    <a href="/" class="mobile-menu__link">Home</a>
+    <a href="/whats-included" class="mobile-menu__link">What's Included</a>
+    <a href="/how-it-works" class="mobile-menu__link">How It Works</a>
+    <a href="/vs-inspection" class="mobile-menu__link">vs. Inspection</a>
+    <a href="/meet-adam" class="mobile-menu__link">Meet Adam</a>
+    <a href="/areas-served" class="mobile-menu__link">Areas Served</a>
+    <a href="/faq" class="mobile-menu__link">FAQ</a>
+    <a href="/blog" class="mobile-menu__link">Blog</a>
+    <a href="https://calendly.com/homeclarityreport/30min" target="_blank" rel="noopener" class="mobile-menu__cta">Book a Discovery Call</a>
+    <a href="tel:+13302031331" class="mobile-menu__phone">(330) 203-1331</a>
   </div>
 <main id="main">
   <section style="position:relative;min-height:440px;background:#0C1830;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:56px;">
@@ -194,13 +199,13 @@
       <div class="footer__nav">
         <div class="footer__nav-col">
           <div class="footer__nav-label mono">Resources</div>
-          <a href="/what-you-get">What You Get</a>
+          <a href="/whats-included">What's Included</a>
           <a href="/faq">FAQ</a>
           <a href="/blog">Blog</a>
         </div>
         <div class="footer__nav-col">
           <div class="footer__nav-label mono">Company</div>
-          <a href="/about">Meet Adam</a>
+          <a href="/meet-adam">Meet Adam</a>
           <a href="https://hometownbuildersclub.com" target="_blank" rel="noopener">HBC Home OS</a>
           <a href="https://akrenovationsohio.com" target="_blank" rel="noopener">AK Renovations</a>
         </div>
