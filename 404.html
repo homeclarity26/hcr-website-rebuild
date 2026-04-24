@@ -194,8 +194,8 @@
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 var hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobile-menu'), mobileClose = document.getElementById('mobile-close');
-function openMenu(){mobileMenu.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
-function closeMenu(){mobileMenu.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+function openMenu(){mobileMenu.classList.add('open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
 if(hamburger) hamburger.addEventListener('click', openMenu);
 if(mobileClose) mobileClose.addEventListener('click', closeMenu);
 document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });

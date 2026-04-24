@@ -120,9 +120,10 @@
 
         <div>
           <h2 style="font-family:var(--font-display);font-size:1.75rem;font-weight:600;color:var(--navy);margin:0 0 1.5rem;">Send a message.</h2>
-          <form action="https://formspree.io/f/YOUR_HCR_FORMSPREE_ID" method="POST" id="hcr-contact-form">
-            <input type="hidden" name="_subject" value="New Inquiry — Home Clarity Report">
+          <form action="https://formsubmit.co/adam@homeclarityreport.com" method="POST" id="hcr-contact-form" novalidate>
+            <input type="hidden" name="_subject" value="New inquiry from homeclarityreport.com">
             <input type="hidden" name="_next" value="https://www.homeclarityreport.com/thank-you">
+            <input type="hidden" name="_captcha" value="false">
             <div class="form-grid">
               <div class="form-field">
                 <label for="fn">First Name *</label>
@@ -217,20 +218,40 @@
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 var hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu'),mobileClose=document.getElementById('mobile-close');
-function openMenu(){mobileMenu.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
-function closeMenu(){mobileMenu.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+function openMenu(){mobileMenu.classList.add('open');hamburger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeMenu(){mobileMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
 if(hamburger)hamburger.addEventListener('click',openMenu);
 if(mobileClose)mobileClose.addEventListener('click',closeMenu);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 (function(){
   var form=document.getElementById('hcr-contact-form');
   if(!form) return;
-  if(form.action.indexOf('YOUR_HCR_FORMSPREE_ID')!==-1){
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      window.location.href='/thank-you';
-    });
+  var required=['fn','ln','em','ph','ci','ms'];
+  function setError(id,msg){
+    var el=document.getElementById(id);
+    if(!el) return;
+    el.style.borderColor='#c0392b';
+    var err=el.parentNode.querySelector('.field-error');
+    if(!err){err=document.createElement('span');err.className='field-error';err.style.cssText='font-size:0.75rem;color:#c0392b;margin-top:4px;display:block;';el.parentNode.appendChild(err);}
+    err.textContent=msg;
   }
+  function clearErrors(){
+    form.querySelectorAll('.field-error').forEach(function(e){e.remove();});
+    form.querySelectorAll('input,textarea').forEach(function(e){e.style.borderColor='';});
+  }
+  form.addEventListener('submit',function(e){
+    clearErrors();
+    var valid=true;
+    var labels={fn:'First name',ln:'Last name',em:'Email',ph:'Phone',ci:'City',ms:'Message'};
+    required.forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el||!el.value.trim()){setError(id,labels[id]+' is required.');valid=false;}
+    });
+    var em=document.getElementById('em');
+    if(em&&em.value.trim()&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){setError('em','Please enter a valid email address.');valid=false;}
+    if(!valid){e.preventDefault();return;}
+    if(typeof trackEvent==='function') trackEvent('submit','contact_form','hcr_contact');
+  });
 })();
 </script>
 </body>
